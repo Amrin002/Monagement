@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="btnmasuk">#11231B</color>
+    <color name="white2">#FDFDFD</color>
 </resources>

@@ -6,4 +6,9 @@
     </style>
 
     <style name="Theme.Monagement" parent="Base.Theme.Monagement" />
+    <style name="RoundedBottomCorners">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+        <item name="cornerSizeBottomRight">16dp</item>
+    </style>
 </resources>

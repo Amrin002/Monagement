@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -7,4 +7,63 @@
     android:layout_height="match_parent"
     tools:context=".GetStartedPage">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imv1"
+        android:layout_width="match_parent"
+        android:layout_height="371dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/getstarted"
+         />
+
+
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:src="@drawable/getstarted2"
+        android:layout_below="@id/imv1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:id="@+id/imv2"/>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imv2"
+        android:layout_marginHorizontal="30dp"
+        app:cardCornerRadius="20dp"
+        android:background="@color/white2"
+        app:cardElevation="8dp"
+        >
+    <com.lctproduction.monagement.widget.JustifiedTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:text="Jadikan manajemen keuangan lebih sederhana dan menyenangkan dengan Monagement. Aplikasi ini dirancang untuk memberikan Anda kontrol penuh atas pemasukan dan pengeluaran."
+
+
+        tools:ignore="HardcodedText,VisualLintLongText"
+        android:id="@+id/textstarted"
+        android:padding="5dp"
+        android:textAlignment="gravity"
+        android:background="@drawable/bg_radius"/>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="220dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/btnmasuk"
+        android:id="@+id/getStarted"
+        android:drawableEnd="@drawable/rightarrow"
+        android:elegantTextHeight="true"
+        android:text="Masuk"
+        android:layout_marginBottom="50dp"
+        android:textColor="@color/white" />
+
+
+
+</RelativeLayout>
