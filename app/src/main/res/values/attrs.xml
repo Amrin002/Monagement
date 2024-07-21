@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomCardView">
+        <attr name="cornerRadiusBottomLeft" format="dimension"/>
+        <attr name="cornerRadiusBottomRight" format="dimension"/>
+
+    </declare-styleable>
+</resources>

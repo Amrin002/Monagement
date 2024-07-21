@@ -24,18 +24,22 @@
         android:layout_below="@id/imv1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:id="@+id/imv2"/>
+        android:id="@+id/imv2"
+        />
 
 
-    <androidx.cardview.widget.CardView
+    <com.lctproduction.monagement.widget.CustomCardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/imv2"
-        android:layout_marginHorizontal="30dp"
-        app:cardCornerRadius="20dp"
         android:background="@color/white2"
-        app:cardElevation="8dp"
+        app:cardElevation="4dp"
+        app:cornerRadiusBottomLeft="16dp"
+        app:cornerRadiusBottomRight="16dp"
+        android:layout_marginHorizontal="30dp"
         >
+
+
     <com.lctproduction.monagement.widget.JustifiedTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,8 +52,8 @@
         android:id="@+id/textstarted"
         android:padding="5dp"
         android:textAlignment="gravity"
-        android:background="@drawable/bg_radius"/>
-    </androidx.cardview.widget.CardView>
+        />
+    </com.lctproduction.monagement.widget.CustomCardView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="220dp"
@@ -57,7 +61,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:backgroundTint="@color/btnmasuk"
-        android:id="@+id/getStarted"
+        android:id="@+id/btnMasuk"
         android:drawableEnd="@drawable/rightarrow"
         android:elegantTextHeight="true"
         android:text="Masuk"

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.HomeFragment">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbarHome"
+        android:background="@drawable/appbarbg"
+        android:layout_alignParentTop="true">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/loginimg"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:id="@+id/imgLogin"
+            />
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/addbtn"
+            android:backgroundTint="@color/black"
+            android:background="@color/transparansi"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="15dp"
+            android:id="@+id/addBtnHome"
+            android:contentDescription="@string/add_button"/>
+
+
+        </RelativeLayout>
+
+
+</FrameLayout>

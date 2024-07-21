@@ -36,7 +36,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
 }
+
 
 dependencies {
 
@@ -48,6 +50,10 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    implementation(libs.material.v140)
+    implementation(libs.arrow.core)
+    implementation(libs.timber)
     implementation(libs.androidx.cardview)
+    implementation("io.appwrite:sdk-for-android:5.1.1")
+
+
 }

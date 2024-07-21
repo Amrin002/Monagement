@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="btnmasuk">#11231B</color>
     <color name="white2">#FDFDFD</color>
+    <color name="primaryColor">#2D8C61</color>
+    <color name="primaryColorBlue">#328EE3</color>
+    <color name="green">#55E332</color>
+    <color name="lightGrey">#D9D9D9</color>
+    <color name="transparansi">#00000000</color>
 </resources>
