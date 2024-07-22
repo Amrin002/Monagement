@@ -1,60 +1,68 @@
 package com.lctproduction.monagement.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lctproduction.monagement.R
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.lctproduction.monagement.adapter.StatsPengeluaranAdapter
+import com.lctproduction.monagement.adapter.StatsTotalDanaAdapter
+import com.lctproduction.monagement.databinding.FragmentStatistikBinding
 
-/**
- * A simple [Fragment] subclass.
- * Use the [StatistikFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+import com.lctproduction.monagement.datasources.StatsPengeluaran
+import com.lctproduction.monagement.datasources.TotalDana
+
 class StatistikFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentStatistikBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statistik, container, false)
+    ): View {
+        _binding = FragmentStatistikBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment StatistikFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StatistikFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val rvStatsPengeluaran = binding.rvPengeluaran2
+
+        val daftarStatsPengeluaran = listOf(
+            StatsPengeluaran("Belanja", 60000.0, R.drawable.shop_icon, R.drawable.bg_radius2, R.color.lightyellow),
+//            Pengeluaran("Transportasi", 300000.0, R.drawable.transportasi, R.drawable.bg_radius22 )
+
+
+            // Tambahkan pengeluaran lainnya sesuai kebutuhan
+        )
+        val adapter = StatsPengeluaranAdapter(daftarStatsPengeluaran)
+
+        rvStatsPengeluaran.layoutManager = LinearLayoutManager(requireContext())
+        rvStatsPengeluaran.adapter = adapter //Type mismatch: inferred type is PengeluaranAdapter but RecyclerView.Adapter<(raw) RecyclerView.ViewHolder!>? was expected
+
+        // Total Dana
+        val rvTotalDana = binding.rvTotalDanaKeluar
+
+        val daftarStatsTotalDana = listOf(
+            TotalDana("Belanja", 60000.0, R.drawable.shop_icon, R.drawable.bg_radius2, R.color.lightyellow),
+//            Pengeluaran("Transportasi", 300000.0, R.drawable.transportasi, R.drawable.bg_radius22 )
+
+
+            // Tambahkan pengeluaran lainnya sesuai kebutuhan
+        )
+        val adapter2 = StatsTotalDanaAdapter(daftarStatsTotalDana)
+
+        rvTotalDana.layoutManager = LinearLayoutManager(requireContext())
+        rvTotalDana.adapter = adapter2
+        // Now you can access views using binding, e.g., binding.someTextView.text = "Hello"
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // To avoid memory leaks
     }
 }

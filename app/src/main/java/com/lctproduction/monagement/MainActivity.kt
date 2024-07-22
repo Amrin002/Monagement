@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             insets
         }
         val fragmentContainer : FrameLayout = binding.fragementContainer
-        val bottomNavigationView: BottomNavigationView = binding.bottomNavbar
+        val bottomNavigationView: BottomNavigationView = binding.bottomNavigation
         bottomNavigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_home -> {

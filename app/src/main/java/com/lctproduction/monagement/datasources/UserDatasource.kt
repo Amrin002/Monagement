@@ -19,26 +19,25 @@ class UserDataSource(context: Context) {
         return db.insert(DatabaseHelper.TABLE_USERS, null, values)
     }
 
-    fun getUserByPhone(phone: String): User? {
+    fun getUser(phone: String): User {
         val db = dbHelper.readableDatabase
         val cursor: Cursor = db.query(
-            DatabaseHelper.TABLE_USERS, arrayOf(DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_NAME, DatabaseHelper.COLUMN_PHONE, DatabaseHelper.COLUMN_PASSWORD),
-            "${DatabaseHelper.COLUMN_PHONE}=?", arrayOf(phone), null, null, null, null
+            DatabaseHelper.TABLE_USERS,
+            arrayOf(DatabaseHelper.COLUMN_ID, DatabaseHelper.COLUMN_NAME, DatabaseHelper.COLUMN_PHONE, DatabaseHelper.COLUMN_PASSWORD),
+            "${DatabaseHelper.COLUMN_PHONE} = ?",
+            arrayOf(phone),
+            null, null, null
         )
-
-        return if (cursor.moveToFirst()) {
-            val user = User(
-                id = cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID)),
-                name = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_NAME)),
-                phone = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PHONE)),
-                password = cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PASSWORD))
-            )
-            cursor.close()
-            user
-        } else {
-            cursor.close()
-            null
-        }
+        cursor.moveToFirst()
+        val user = User(
+            cursor.getInt(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_ID)),
+            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_NAME)),
+            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PHONE)),
+            cursor.getString(cursor.getColumnIndexOrThrow(DatabaseHelper.COLUMN_PASSWORD))
+        )
+        cursor.close()
+        db.close()
+        return user
     }
 
     fun validateUser(phone: String, password: String): Boolean {

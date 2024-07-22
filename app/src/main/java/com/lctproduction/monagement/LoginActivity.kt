@@ -1,5 +1,4 @@
 package com.lctproduction.monagement
-
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
@@ -43,10 +42,17 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnLogin.setOnClickListener {
-            if(validasi()) {
-                val nomorHandphone = binding.edtNomorHandphone.text.toString().trim()
-                val password = binding.edtPassword.text.toString().trim()
+            val nomorHandphone = binding.edtNomorHandphone.text.toString().trim()
+            val password = binding.edtPassword.text.toString().trim()
+            if (validasi()) {
                 if (userDataSource.validateUser(nomorHandphone, password)) {
+                    // Save user info in SharedPreferences
+                    val user = userDataSource.getUser(nomorHandphone)
+                    val sharedPreferences = getSharedPreferences("UserPreferences", MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putString("userName", user.name)
+                    editor.apply()
+
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 } else {

@@ -1,60 +1,62 @@
 package com.lctproduction.monagement.fragments
 
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.lctproduction.monagement.R
+import com.lctproduction.monagement.adapter.PengeluaranAdapter
+import com.lctproduction.monagement.databinding.FragmentHomeBinding
+import com.lctproduction.monagement.datasources.Pengeluaran
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+    ): View {
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment HomeFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            HomeFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // Get user info from SharedPreferences
+        val sharedPreferences = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        val userName = sharedPreferences.getString("userName", "User")
+        // Set initial for InitialCircleView
+        binding.intialCircleView.setInitial(userName ?: "User")
+
+        val rvPengeluaran = binding.rvPengeluaran
+
+        val daftarPengeluaran = listOf(
+            Pengeluaran("Belanja", 60000.0, R.drawable.shop_icon, R.drawable.bg_radius2, R.color.lightyellow),
+            Pengeluaran("BBM", 30000.00, R.drawable.transportasi, R.drawable.bg_radius22, R.color.textcolorred)
+
+
+
+            // Tambahkan pengeluaran lainnya sesuai kebutuhan
+        )
+        val adapter = PengeluaranAdapter(daftarPengeluaran)
+
+        rvPengeluaran.layoutManager = LinearLayoutManager(requireContext())
+        rvPengeluaran.adapter = adapter //Type mismatch: inferred type is PengeluaranAdapter but RecyclerView.Adapter<(raw) RecyclerView.ViewHolder!>? was expected
+
+
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null // To avoid memory leaks
     }
 }

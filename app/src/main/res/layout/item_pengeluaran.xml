@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_margin="5dp"
+
+>
+    <View
+        android:layout_width="10dp"
+        android:layout_height="70dp"
+        android:background="@drawable/bg_radius2"
+        android:id="@+id/vItem"/>
+    <LinearLayout
+        android:layout_centerVertical="true"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/lightyellow"
+        android:layout_toEndOf="@id/vItem"
+        android:paddingStart="10dp"
+        android:paddingEnd="20dp"
+        android:id="@+id/labelRv"
+        >
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imgItemPengeluaran"
+            android:src="@drawable/shop_icon"
+            android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/labelPengeluaran"
+                android:text="Belanja"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/poppins"
+                android:textColor="@color/textcolor"
+                android:layout_marginStart="20dp"
+                android:textSize="16sp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/danapengeluaran"
+        android:text="- Rp. 600.000"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="20dp"
+        android:textColor="@color/textcolorred"/>
+
+
+</RelativeLayout>
