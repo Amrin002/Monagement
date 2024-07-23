@@ -31,6 +31,7 @@
             android:id="@+id/addBtnHome"
             android:contentDescription="@string/add_button"/>
 
+
         <com.lctproduction.monagement.widget.CustomImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -294,6 +295,60 @@
 
 </RelativeLayout>
     </ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/containerPopUp"
+        android:visibility="visible"
+        android:background="@color/opacity1">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/cardPopUp"
+        android:layout_centerInParent="true"
 
+        android:layout_marginHorizontal="50dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/mainCardPopUp">
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddPendapatan"
+                android:text="Tambah Pendapatan"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:background="@color/white"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:drawableStart="@drawable/addpendapatan"
+                android:drawablePadding="10dp"
+                android:layout_centerHorizontal="true"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/btnAddPendapatan"
+                android:background="@color/black"
+                android:id="@+id/space1"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_margin="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/btnAddTransaksi"
+                android:text="Tambah Pendapatan"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins"
+                android:background="@color/white"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:drawableStart="@drawable/addtransaksi"
+                android:drawablePadding="10dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/space1"/>
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+    </RelativeLayout>
 
 </RelativeLayout>

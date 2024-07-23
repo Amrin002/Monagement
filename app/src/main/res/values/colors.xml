@@ -15,5 +15,6 @@
     <color name="lightyellow">#E3DEAF</color>
     <color name="textcolor">#767676</color>
     <color name="textcolorred">#FE7878</color>
+    <color name="opacity1">#40000000</color>
 
 </resources>

@@ -32,7 +32,8 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Get user info from SharedPreferences
-        val sharedPreferences = requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
+        val sharedPreferences =
+            requireActivity().getSharedPreferences("UserPreferences", Context.MODE_PRIVATE)
         val userName = sharedPreferences.getString("userName", "User")
         // Set initial for InitialCircleView
         binding.intialCircleView.setInitial(userName ?: "User")
@@ -40,9 +41,20 @@ class HomeFragment : Fragment() {
         val rvPengeluaran = binding.rvPengeluaran
 
         val daftarPengeluaran = listOf(
-            Pengeluaran("Belanja", 60000.0, R.drawable.shop_icon, R.drawable.bg_radius2, R.color.lightyellow),
-            Pengeluaran("BBM", 30000.00, R.drawable.transportasi, R.drawable.bg_radius22, R.color.textcolorred)
-
+            Pengeluaran(
+                "Belanja",
+                60000.0,
+                R.drawable.shop_icon,
+                R.drawable.bg_radius2,
+                R.color.lightyellow
+            ),
+            Pengeluaran(
+                "BBM",
+                30000.00,
+                R.drawable.transportasi,
+                R.drawable.bg_radius22,
+                R.color.textcolorred
+            )
 
 
             // Tambahkan pengeluaran lainnya sesuai kebutuhan
@@ -50,13 +62,21 @@ class HomeFragment : Fragment() {
         val adapter = PengeluaranAdapter(daftarPengeluaran)
 
         rvPengeluaran.layoutManager = LinearLayoutManager(requireContext())
-        rvPengeluaran.adapter = adapter //Type mismatch: inferred type is PengeluaranAdapter but RecyclerView.Adapter<(raw) RecyclerView.ViewHolder!>? was expected
+        rvPengeluaran.adapter =
+            adapter //Type mismatch: inferred type is PengeluaranAdapter but RecyclerView.Adapter<(raw) RecyclerView.ViewHolder!>? was expected
 
+        binding.addBtnHome.setOnClickListener {
+            if (binding.containerPopUp.visibility == View.GONE) {
+                binding.containerPopUp.visibility = View.VISIBLE
+            } else {
+                binding.containerPopUp.visibility = View.GONE
+            }
 
+        }
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null // To avoid memory leaks
-    }
+            super.onDestroyView()
+            _binding = null // To avoid memory leaks
+        }
 }
